@@ -88,3 +88,48 @@ $arr = [
 ];
 
 var_dump($arr);
+
+$key = "name";
+
+var_dump($arr[$key]);
+
+$arr[1.0] = "2.0";
+var_dump($arr[1.0]);
+$arr[] = 2.0;
+
+var_dump($arr);
+
+
+/**Variable */
+
+
+$global_val = "Global"; // Global scope
+
+function test_local_val()
+{
+    $local_val = "Local"; // Local var
+}
+
+var_dump($global_val);
+
+// var_dump($local_val); Can't print
+
+function use_global_key(){
+    global $global_val; // Use global val 
+
+    $global_val = "GLOBAL";
+}
+
+use_global_key();
+var_dump($global_val);
+
+/**Static Variable: Chi ton tai trong ham cuc bo nhung gia tri khong 
+ * bi mat di khi ham dong
+*/
+
+function test_static_val(){
+    static $static_val = 1;
+}
+
+test_static_val();
+
