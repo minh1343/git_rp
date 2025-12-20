@@ -15,49 +15,6 @@ ul{
 }
 
 
-/* Common CSS */
-
-.center{
-    text-align: center;
-}
-
-.left{
-    text-align: left;
-}
-
-.b{
-    font-weight: bold;
-}
-
-.uppercase{
-    text-transform: uppercase;
-}
-
-.flex{
-    display: flex;
-    gap: 20px;
-}
-
-.w-320{
-    width: 320px;
-}
-
-
-
-.form{
-    box-sizing: content-box;
-}
-
-.form-item{
-    margin: 10px 0;
-}
-
-
-.form input{
-    width: 100%;
-    padding: 4px 10px;
-    box-sizing: border-box;
-}
 
 /* LAYOUT */
 

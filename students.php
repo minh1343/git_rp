@@ -3,9 +3,12 @@
 require_once("./header.php");
 require_once("./db.php");
 
+
+$students = getData();
+
 if($_POST){
 
-    $validate = validateData($_POST);
+    $validate = validateData(datas: $_POST, required: ["fullname", "faculty", "class", "cohort"]);
 
     if($validate){
         $new_students = $_POST;
@@ -13,12 +16,14 @@ if($_POST){
         $students[] = $new_students;
     }
 
+
+    updateData($students);
    
 }
 
-function validateData($datas){
-    foreach($datas as $key => $value){
-        if(empty($value)){
+function validateData($datas, $required){
+    foreach($required as $key){
+        if(empty($datas[$key])){
             echo "Vui long dien du thong tin";
             return false;
         }
@@ -75,12 +80,14 @@ function validateData($datas){
                             <td class="center"><?php echo $student['faculty'] ?></td>
                             <td class="center"><?php echo $student['class'] ?></td>
                             <td class="center"><?php echo $student['cohort'] ?></td>
-                            <td class="center"><form action="" method="post"><input type="submit" value="Delete"></form></td>
+                            <td class="center"><form action="/delete" method="post">
+                                <input type="hidden" name="id" value="<?php echo $student['id'] ?>"><button type="submit">delete</button></form>
+                            </td>
                         </tr>
                  <?php endforeach ?>
                  <?php else: ?>
                     <tr>
-                        <th colspan="5">Chưa có thông tin sinh viên nào</th>
+                        <th colspan="6">Chưa có thông tin sinh viên nào</th>
                     </tr>
                 <?php endif ?>
             </tbody>
